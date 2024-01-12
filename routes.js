@@ -3,11 +3,14 @@ const router = express.Router();
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 //import controllers
 const { 
+    
     createPaymentIntentByCard, 
     confirmPaymentIntent,
     fundsTransfer,
     checkStatusPaymentIntent
 } = require("./controllers/stripePaymentIntent");
+
+const { testecloud } = require("./controllers/teste");
 
 const { validateCard } = require("./controllers/stripeCard");
 
@@ -30,8 +33,12 @@ const processTransfersOnRefund = require("./middlewares/processTransfersOnRefund
     //confirm the intent payment
     router.get("/confirm-payment-intent", confirmPaymentIntent);
 
+    //confirm the intent payment
+    router.get("/teste", testecloud);
+
     //cancel payment intent
     router.get("/cancel-payment-intent", checkPaymentIntent, cancelPayment);
+    
 
     //refund
     router.post("/refund-payment", checkPaymentForRefund, processTransfersOnRefund, refund);
