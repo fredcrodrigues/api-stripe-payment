@@ -33,8 +33,7 @@ const processTransfersOnRefund = require("./middlewares/processTransfersOnRefund
     //confirm the intent payment
     router.get("/confirm-payment-intent", confirmPaymentIntent);
 
-    //confirm the intent payment
-    router.get("/teste", testecloud);
+   
 
     //cancel payment intent
     router.get("/cancel-payment-intent", checkPaymentIntent, cancelPayment);
